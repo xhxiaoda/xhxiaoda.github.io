@@ -48,6 +48,8 @@ $(function () {
     });
     $('.color-switcher ul li').click(function () {
         var color = $(this).attr('data-color');
+        console.log(color)
+        var color = 'black';
         $('#theme-color').attr("href", "css/" + color + ".css");
         $('.color-switcher ul li').removeClass('active');
         $(this).addClass('active');
