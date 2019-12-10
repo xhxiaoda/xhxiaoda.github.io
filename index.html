@@ -5,7 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>上海福安废旧物资回收有限公司</title>
-        <meta name="description" content="Slide is a beautiful Bootstrap 4 template for multipurpose landing pages." /> 
+        <meta name="description" content="废品、金属、工厂维废、废旧塑料、物资回收" />
+
+        <link href="css/swiper.min.css" rel="stylesheet">
 
         <!--Inter UI font-->
         <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
@@ -15,6 +17,8 @@
 
         <!-- Bootstrap CSS / Color Scheme -->
         <link rel="stylesheet" href="css/default.css" id="theme-color">
+
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
 
@@ -22,7 +26,7 @@
         <section class="sticky-top sticky-navigation">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand heading-black">
+                    <a class="navbar-brand heading-black" href="javascript:;">
                         上海福安废旧物资回收有限公司
                     </a>
                     <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 
@@ -32,17 +36,21 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
+                                <a class="nav-link page-scroll" href="index.html">网站首页</a>
+<!--                                <a class="nav-link page-scroll" href="#features">网站首页</a>-->
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#features">公司简介</a>
+<!--                                <a class="nav-link page-scroll" href="#pricing">公司简介</a>-->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link page-scroll" href="#pricing">公司主营产品</a>
+                                <a class="nav-link page-scroll" href="#pricing">经营范围</a>
+<!--                                <a class="nav-link page-scroll" href="#help">经营范围</a>-->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link page-scroll" href="#help">联系方式</a>
+                                <a class="nav-link page-scroll" href="#help">联系我们</a>
+<!--                                <a class="nav-link page-scroll" href="#blog">联系我们</a>-->
                             </li>
-<!--                            <li class="nav-item">-->
-<!--                                <a class="nav-link page-scroll" href="#blog">Blog</a>-->
-<!--                            </li>-->
 <!--                            <li class="nav-item">-->
 <!--                                <a class="nav-link page-scroll d-flex flex-row align-items-center" href="#">-->
 <!--                                    <em data-feather="twitter" width="18" height="18" class="mr-2"></em>-->
@@ -59,19 +67,32 @@
         <section class="pt-6" id="home">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 mx-auto my-auto text-center">
-                        <span class="text-uppercase text-muted small-xl">上海福安废旧回收有限公司</span>
-                        <h1 class="display-4 mt-2 mb-5">福安简介</h1>
-<!--                        <a href="#" class="btn btn-primary d-inline-flex flex-row align-items-center">-->
-<!--                            <em data-feather="twitter" width="20" height="20" class="mr-2"></em>-->
-<!--                            Build your website-->
-<!--                        </a>-->
-<!--                        <div class="demo-wrapper text-center">-->
-<!--                            <a href="#" class="d-flex flex-row align-items-center justify-content-center text-muted demo-sample">-->
-<!--                                <em data-feather="download-cloud" width="17" height="17" class="mr-2"></em>-->
-<!--                                Demo landing page-->
-<!--                            </a>-->
-<!--                        </div>-->
+                    <div class="col-md-8 mx-auto my-auto text-center" style="display: none">
+                        <h1 class="display-4 mt-2 mb-5">上海福安废旧物资回收有限公司</h1>
+                        <a href="#" class="btn btn-primary d-inline-flex flex-row align-items-center">
+                            <em data-feather="twitter" width="20" height="20" class="mr-2"></em>
+                            Build your website
+                        </a>
+                        <div class="demo-wrapper text-center">
+                            <a href="#" class="d-flex flex-row align-items-center justify-content-center text-muted demo-sample">
+                                <em data-feather="download-cloud" width="17" height="17" class="mr-2"></em>
+                                Demo landing page
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-container swiper-container0">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href = "javascript:;"><img src="img/banner1.jpg"/></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href = "javascript:;"><img src="img/banner2.jpg"/></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href = "javascript:;"><img src="img/banner3.jpg"/></a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
 <!--                <div class="row mt-6">-->
@@ -88,7 +109,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 mx-auto">
-                        <h2 class="dot-circle">The only page builder you'll ever need.</h2>
+                        <h2 class="dot-circle">福安</h2>
                         <div class="row mt-6">
                             <div class="col-sm-6 mb-4">
                                 <h4>Front-end page builder</h4>
@@ -360,9 +381,11 @@
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="js/swiper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.5.0/feather.min.js"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
