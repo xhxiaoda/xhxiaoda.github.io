@@ -5437,7 +5437,9 @@ button.bg-dark:focus {
 .m-5 {
   margin: 3rem !important; }
 
-.mt-5,
+.mt-5{
+  margin-top: 0rem !important;
+}
 .my-5 {
   margin-top: 3rem !important; }
 
@@ -5665,7 +5667,7 @@ button.bg-dark:focus {
 .p-7 {
   padding: 9rem !important; }
 
-.pt-7,
+/*.pt-7,*/
 .py-7 {
   padding-top: 9rem !important; }
 
@@ -5739,6 +5741,7 @@ button.bg-dark:focus {
   margin-left: auto !important; }
 
 @media (min-width: 576px) {
+
   .m-sm-0 {
     margin: 0 !important; }
   .mt-sm-0,
@@ -6627,6 +6630,11 @@ button.bg-dark:focus {
     margin-left: auto !important; } }
 
 @media (min-width: 1200px) {
+  .contactWay li:nth-child(odd){float: left;width: 55%;box-sizing: border-box}
+  .contactWay li{margin-left: 8%}
+
+  .contactWay:after{content: "";display: block;clear: both;height: 0;visibility: hidden}
+  .contactWay{zoom: 1}
   .m-xl-0 {
     margin: 0 !important; }
   .mt-xl-0,

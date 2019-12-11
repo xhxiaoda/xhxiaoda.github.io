@@ -19,4 +19,5 @@ $(function () {
         });
     }
     focusImg(".swiper-container0");
+    focusImg(".swiper-container1");
 })
