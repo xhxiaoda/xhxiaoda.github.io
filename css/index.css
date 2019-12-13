@@ -16,7 +16,7 @@ body{background: url("../img/bg.jpg") no-repeat;background-size: 100% 100%;backg
 .phoneNun{background: url("../img/header_dianhua.png") no-repeat;background-size: 21px 21px;background-position:0 center;}
 .swiper-slide img{width:100%;height:100%;}
 .nav-item{border-bottom: 10px solid transparent;}
-.nav-item:not(:last-child):hover{border-bottom: 10px solid black;}
+.header .nav-item:not(:last-child):hover{border-bottom: 10px solid #FeC100;}
 .footer{background: black;}
 .footerColor{color: white;}
 .ml-autofoot{margin: 0 auto;}
