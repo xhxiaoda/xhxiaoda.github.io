@@ -6632,9 +6632,10 @@ button.bg-dark:focus {
 @media (min-width: 1200px) {
   .contactWay li:nth-child(odd){float: left;width: 55%;box-sizing: border-box}
   .contactWay li{margin-left: 8%}
-
   .contactWay:after{content: "";display: block;clear: both;height: 0;visibility: hidden}
   .contactWay{zoom: 1}
+  .navbar-light{padding: 0 1.25rem}
+  .navbar-light>div{height: 106px;line-height: 106px}
   .m-xl-0 {
     margin: 0 !important; }
   .mt-xl-0,
