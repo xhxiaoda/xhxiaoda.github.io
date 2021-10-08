@@ -1,115 +1,310 @@
 <!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jQuery.photoClip头像图片上传裁剪旋转放大缩小代码</title>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="baidu-site-verification" content="gJxqYFzN96" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>上海福安废旧物资回收有限公司</title>
+        <meta name="description" content="上海福安物资回收有限公司主营废品、金属、工厂维废、废旧塑料、物资等回收处理业务;公司对也从事部分维废等..." />
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
+        <link rel="Shortcut Icon" href="img/true.png" type="image/x-icon"/>
 
-<style>
-	.boxCen {
-		text-align: center;
-	}
-	.file-clip {
-		width: 100%;
-		height: 300px;
-		background: #666;
-		display: inline-block;
-		vertical-align: bottom;
-	}
-	.file {
-		position: relative;
-		display: inline-block;
-		overflow: hidden;
-		vertical-align: middle;
-		margin: 20px 20px 0 0;
-	}
-	.boxCen .file {
-		vertical-align: bottom;
-	}
-	.service-file {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		opacity: 0;
-		bottom: 0;
-		cursor: pointer;
-	}
-	.file-btn {
-		margin: 5px 10px;
-		padding:0 10px;
-		border: 1px solid #606060;
-		cursor:pointer;
-	}
+        <link href="css/swiper.min.css" rel="stylesheet">
 
-	.clipEnd{
-		padding: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-</style>
-</head>
+        <!--Inter UI font-->
+        <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
 
-<body>
+        <!--vendors styles-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div>
-	<div class="boxCen">
-		<div id="clipArea" class="file-clip"></div>
-		<div class="file">
-			<div class="file-btn">点击上传图片</div>
-			<input type="file" class="service-file" id="file">
-		</div>
-		<div class="file-btn" id="clipBtn">裁剪图片</div>
-		<div class="file-btn" id="rotaBtn">向右旋转</div>
-		<div class="file-btn" id="rotaLeftBtn">向左旋转</div>
-		<div class="file-btn" id="rotateInit">还原</div>
-	</div>
-	<div id="imgHtml" class="clipEnd"></div>
-</div>
+        <!-- Bootstrap CSS / Color Scheme -->
+        <link rel="stylesheet" href="css/black.css" id="theme-color">
 
-<script type="text/javascript" src="js/iscroll-zoom.js"></script> 
-<script type="text/javascript" src="js/hammer.js"></script> 
-<script type="text/javascript" src="js/lrz.all.bundle.js"></script> 
-<script type="text/javascript" src="js/jquery.photoClip.js"></script> 
-<script src="js/pinchzoom.js"></script>
-<script>
-	$(function(){
-			clip();
-			$('.photo-clip-view').css({'overflow':'hidden'})	
-	});
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
 
-	function clip(){
-		$("#clipArea").photoClip({
-			size: [398, 300],
-			file: "#file",
-			ok: "#clipBtn",
-			// view:"#imgcav",
-			rotaBtn:'#rotaBtn',
-			rotaLeftBtn:'#rotaLeftBtn',
-			rotateInit:'#rotateInit',
-			// bigBtn:'#bigImg',
-			// smallBtn:'#smallImg',
-			outputSize:[398, 300],
-			loadStart: function() {
-				console.log("照片读取中");
-			},
-			loadComplete: function() {
-				// $('.photo-clip-rotateLayer img').each(function () {
-				// 	new RTP.PinchZoom($(this), {});
-				// });
-				// $('.pinch-zoom-container img').css({'position':''})
-				console.log("照片读取完成");
-			},
-			clipFinish: function(dataURL) {
-				var img = '<img src="'+dataURL+'">';
-				$('#imgHtml').html(img);
-			}
-		});
-	}
-</script>
-</body>
+        <!--navigation-->
+        <section class="sticky-top sticky-navigation header" style="background-color: #000;">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <div style="background-color: #FeC100;padding-left: 20px">
+                       <a class="navbar-brand heading-black" href="javascript:;" style="color: #000;font-family: kaiti;font-size: 1.6rem;">
+                       上海福安废旧物资回收有限公司
+                       </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="index.html" style="color: #fff">网站首页1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#features" style="color: #fff">公司简介</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#pricing" style="color: #fff">经营范围</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#help" style="color: #fff">联系我们</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#footer" style="color: #fff">经营许可</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll phoneNun" href="javascript:;" style="padding-left: 26px;color: #FeC100;">13817861459</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+        <!--hero header-->
+        <section class="pt-6" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto my-auto text-center" style="display: none">
+                        <h1 class="display-4 mt-2 mb-5">上海福安废旧物资回收有限公司</h1>
+                        <a href="#" class="btn btn-primary d-inline-flex flex-row align-items-center">
+                            <em data-feather="twitter" width="20" height="20" class="mr-2"></em>
+                            Build your website
+                        </a>
+                        <div class="demo-wrapper text-center">
+                            <a href="#" class="d-flex flex-row align-items-center justify-content-center text-muted demo-sample">
+                                <em data-feather="download-cloud" width="17" height="17" class="mr-2"></em>
+                                Demo landing page
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-container swiper-container0">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href = "javascript:;"><img src="img/banner1.jpg"/></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href = "javascript:;"><img src="img/banner2.jpg"/></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href = "javascript:;"><img src="img/banner3.jpg"/></a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- features section -->
+        <section class="py-6" id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <h2 class="dot-circle">公司简介</h2>
+                        <div class="row mt-6">
+                            <div class="col-sm-6 mb-4">
+                                <h4>企业简介</h4>
+                                <p class="text-muted">
+                                    上海福安废旧物资回收有限公司是一家专注致力于环保的新兴企业。长期向各事业单位及个人高价现金上门回收各种废旧物资。为了节省贵公司的时间与金钱，本公司竭诚为各单位提供、快速、高效、热情周到的服务。本公司在长期从事各种废旧设备物资回收及拆除工程行业，积累了丰富的经验以及正确的经营理念和严格的营销管理，规范运作，公司本着“学习、诚心、认真、守信”的经营理念出发，诚信服务取得广大客户的信赖和满意。在同行业和客户中有着较好的信誉。
+                                </p>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <h4>企业理念</h4>
+                                <p class="text-muted">
+                                    公司一直秉承诚信、专业、服务作为经营理念。凭借自身对回收行业的深入理解及服务，已经成为具有较高知名度的专业回收服务商，一直专注于变废为宝、净化环境的相关探索，融合专业的服务体系和先进的再加工技术，为国家的环保事业，做出着应有的贡献。凭借雄厚经济实力，恪守诚信为本的原则，得了众多客户的信赖，并在业界获得好的口碑。建立了稳固的合作关系，随着业务的不断发展和壮大，合作伙伴的范围也在不断扩大。我们热情盼望与您的合作，为社会的可持续发展献上一份努力。
+                                </p>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <h4>企业精神</h4>
+                                <p class="text-muted">开拓进取、锐意创新、刻意求真、崇尚完善。</p>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <h4>服务宗旨</h4>
+                                <p class="text-muted">价格合理、信守承诺、安全快捷 、合法高效。</p>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <h4>企业原则</h4>
+                                <p class="text-muted">讲诚信、以信誉求发展</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--pricing section-->
+        <section class=" pt-7" id="pricing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <h2 class="dot-circle" style="margin-bottom: 6rem;">经营范围</h2>
+                        <p class="text-muted lead">上海福安废旧物资回收有限公司常年做拆除和回收项目，拆除有：工厂拆除；回收有：废铁、废钢、废铜、废铝、不锈钢、电线、电缆、有色金属、废纸、报纸、厨房设备、空调、电脑、变压器、电机、配电箱。 </p>
+                        <div class="row pricing-table">
+                            <div class="col-sm-5">
+                                <ul class="list-unstyled pricing-list">
+                                    <li>
+                                        <h5>工业垃圾清运服务</h5>
+                                        <p class="text-muted">为各大生产型企业提供低成本的废弃物的清运工作。</p>
+                                    </li>
+                                    <li>
+                                        <h5>保洁服务</h5>
+                                        <p class="text-muted">有着长期从事仓库清洁的经验，所有工作人员都是有着专业的技术以及负责的态度。</p>
+                                    </li>
+                                    <li>
+                                        <h5>其他</h5>
+                                        <p class="text-muted">厂房测量、厂房装修估价等</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 ml-auto">
+                                <div class="card">
+                                    <div class="card-body text-center swiper" style="padding: 0">
+                                        <div class="swiper-container swiper-container1">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style1.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style2.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style3.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style4.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style5.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style6.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style7.jpg"/></a>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <a href = "javascript:;"><img src="img/style8.jpg"/></a>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--help section-->
+        <section class=" mt-7" id="help">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <h2 class="dot-circle">联系我们</h2>
+                        <div class="row mt-5 card-contacts">
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="icon-box">
+                                            <div class="icon-box-inner small-xs text-primary">
+                                                <span data-feather="inbox" width="30" height="30"></span>
+                                            </div>
+                                        </div>
+                                        <h5>邮件</h5>
+                                        <p class="text-muted small-xl">邮件承诺24小时内回复</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="icon-box">
+                                            <div class="icon-box-inner small-xs text-primary">
+                                                <span data-feather="message-circle" width="30" height="30"></span>
+                                            </div>
+                                        </div>
+                                        <h5>电话</h5>
+                                        <p class="text-muted small-xl">电话最直接的联系方式</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5" >
+                            <ul class="contactWay">
+                                <li>
+                                    <h6>公司名称：上海福安废旧物资回收有限公司</h6>
+                                </li>
+                                <li>
+                                    <h6>联系人：陈先生</h6>
+                                </li>
+                                <li>
+                                    <h6>联系方式：13661744896</h6>
+                                </li>
+                                <li>
+                                    <h6>邮箱：2392285127@qq.com</h6>
+                                </li>
+                                <li>
+                                    <h6>地址：上海市松江区佘山三角街8号618室</h6>
+                                </li>
+                            </ul>
+<!--                            <div class="col-md-6 mb-5" style="margin-bottom: 1rem!important;">-->
+<!--                                <h6>地址：上海市松江区佘山三角街8号618室</h6>-->
+<!--                                <p class="text-muted"></p>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sticky-top sticky-navigation footer" id="footer">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light" style="padding-bottom: 0">
+                    <div class="collapse navbar-collapse" id="navbarCollapse1">
+                        <ul class="navbar-nav ml-autofoot">
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="index.html" style="color: white">网站首页</a>
+                                <!--                                <a class="nav-link page-scroll" href="#features">网站首页</a>-->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#features" style="color: white">公司简介</a>
+                                <!--                                <a class="nav-link page-scroll" href="#pricing">公司简介</a>-->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#pricing" style="color: white">经营范围</a>
+                                <!--                                <a class="nav-link page-scroll" href="#help">经营范围</a>-->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#help" style="color: white">联系我们</a>
+                                <!--                                <a class="nav-link page-scroll" href="#blog">联系我们</a>-->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#footer" style="color: white">经营许可</a>
+                                <!--                                <a class="nav-link page-scroll" href="#blog">联系我们</a>-->
+                            </li>
+                            <!--                            <li class="nav-item">-->
+                            <!--                                <a class="nav-link page-scroll d-flex flex-row align-items-center" href="#">-->
+                            <!--                                    <em data-feather="twitter" width="18" height="18" class="mr-2"></em>-->
+                            <!--                                    Log in-->
+                            <!--                                </a>-->
+                            <!--                            </li>-->
+                        </ul>
+                    </div>
+                </nav>
+                <div class="companyEnd">版权所有 上海福安废旧物资回收有限公司 All Rights Reserved</div>
+            </div>
+        </section>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="js/swiper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.5.0/feather.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/index.js"></script>
+    </body>
 </html>
-
