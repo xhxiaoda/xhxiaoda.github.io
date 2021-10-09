@@ -242,6 +242,19 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 				
 				distanceNow = distance;
+
+				const distanceDiff = distanceNow - distanceOrigin;
+				if(distanceDiff > 0){
+					zoomNum += distanceDiff;
+				}else if(distanceDiff < 0){
+					if(zoomNum - distanceDiff >= 0){
+						zoomNum -= distanceDiff;
+					}
+				}
+
+				myScroll.zoom(zoomNum);
+
+				$(touch).html("<span>"+distanceNow+"</span>");
 			}
 		});
 
