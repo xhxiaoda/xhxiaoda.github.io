@@ -246,17 +246,18 @@
 				const distanceDiff = distanceNow - distanceOrigin;
 				
 				if(distanceDiff > 0 && zoomNum < 4){
-					zoomNum += 0.1;			
+					zoomNum += 0.001;			
 				}
 
 				if(distanceDiff < 0 && zoomNum > 0){
-					zoomNum -= 0.1;			
+					zoomNum -= 0.001;			
 				}
 
-				$('#imgHtml').html("zoomNum:"+zoomNum.toFixed(2));
 				if(zoomNum <= 0){
 					zoomNum = 0;
 				}
+				
+				$('#imgHtml').html("zoomNum:"+zoomNum.toFixed(2));
 				myScroll.zoom(zoomNum.toFixed(2) * 0.25);
 			}
 		});
