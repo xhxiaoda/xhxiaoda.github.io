@@ -223,7 +223,7 @@
 		});
 
 		$('#imgHtml').html("1111");
-		$('#touchBtn').bind('touchstart',function(e){
+		$('.photo-clip-view').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -234,7 +234,7 @@
 			}else{
 			}
 		});
-		$('#touchBtn').bind('touchmove',function(e){
+		$('.photo-clip-view').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
 				// $('#touchBtn').css({'pointer-events':''})
