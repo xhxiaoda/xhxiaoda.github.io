@@ -244,9 +244,6 @@
 				distanceNow = distance;
 
 				const distanceDiff = distanceNow - distanceOrigin;
-
-				$('#imgHtml').html("zoomNum:"+zoomNum);
-				$('#imgHtml1').html("distanceDiff:"+distanceDiff);
 				
 				if(distanceDiff > 0 && zoomNum < 4){
 					zoomNum += 0.1;			
@@ -256,6 +253,7 @@
 					zoomNum -= 0.1;			
 				}
 
+				$('#imgHtml').html("zoomNum:"+zoomNum);
 
 				myScroll.zoom(zoomNum);
 			}
