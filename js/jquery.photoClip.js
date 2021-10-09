@@ -224,7 +224,7 @@
 
 		var istouch=false;
 
-		$('#imgHtml').html("555111");
+		$('#imgHtml').html("2211");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -236,8 +236,6 @@
 				distanceOrigin = distance;
 
 				istouch = true;
-			}else{
-				istouch = false;
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
@@ -272,11 +270,13 @@
 			}
 		});
 
+		$('#touchBtn').bind('touchend',function(e){	
+			istouch = false;
+		});
+
 		$('.photo-clip-view').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				istouch = true;
-			}else{
-				istouch = false;
 			}
 		});
 
@@ -288,6 +288,10 @@
 			}
 
 			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
+		});
+
+		$('.photo-clip-view').bind('touchend',function(e){	
+			istouch = false;
 		});
 
 		function getDistance(p1, p2) {
