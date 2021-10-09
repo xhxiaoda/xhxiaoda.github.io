@@ -55,6 +55,7 @@
 			rotateInit:'',
 			bigBtn: "",
 			smallBtn: "",
+			touch:'',
 			loadStart: function() {},
 			loadComplete: function() {},
 			loadError: function() {},
@@ -80,6 +81,7 @@
 			rotateInit = option.rotateInit,
 			bigBtn = option.bigBtn,
 			smallBtn = option.smallBtn,
+			touch = option.touch,
 			//outputType = option.outputType || "image/jpeg",
 			outputType = "image/jpeg",
 			loadStart = option.loadStart,
@@ -184,6 +186,9 @@
 			curY, // 旋转层的当前Y坐标
 			curAngle; // 旋转层的当前角度
 
+		var distanceOrigin, //双指之间原始距离
+				distanceNow; // 双指移动后的差值
+
 		function imgLoad() {
 			imgLoaded = true;
 
@@ -215,6 +220,45 @@
 			var sf = zoomNum * .25;
 				myScroll.zoom(sf);
 		});
+
+		$(touch).bind('touchstart',function(e){
+			if (e.touches.length > 1) {
+				// 当两根手指放上去的时候，将距离(distance)初始化。
+				const xMove = e.touches[1].clientX - e.touches[0].clientX;
+				const yMove = e.touches[1].clientY - e.touches[0].clientY;
+				//计算开始触发两个手指坐标的距离
+				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
+	
+				distanceOrigin = distance;
+			}
+		});
+		$(touch).bind('touchmove',function(e){
+			// 单手指缩放不做任何操作
+			if (e.touches.length > 1) {
+				//双手指运动 x移动后的坐标和y移动后的坐标
+				const xMove = e.touches[1].clientX - e.touches[0].clientX;
+				const yMove = e.touches[1].clientY - e.touches[0].clientY;
+				//双手指运动新的 ditance
+				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
+				
+				distanceNow = distance;
+			}
+		});
+
+		$(touch).bind('touchend',function(e){
+			const distanceDiff = distanceNow - distanceOrigin;
+			// newScale = tempData?.scale + 0.005 * distanceDiff
+			if(distanceDiff > 0){
+				zoomNum += distanceDiff;
+			}else if(distanceDiff < 0){
+				if(zoomNum - distanceDiff >= 0){
+					zoomNum -= distanceDiff;
+				}
+			}
+
+			myScroll.zoom(zoomNum);
+		});
+
 		function initScroll() {
 			var options = {
 				zoom: true,
