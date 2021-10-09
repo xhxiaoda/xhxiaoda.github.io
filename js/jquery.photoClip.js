@@ -251,7 +251,10 @@
 						zoomNum -= distanceDiff;
 					}
 				}
-				$('#imgHtml').html(zoomNum);
+				$('#imgHtml').html("zoomNum:"+zoomNum);
+				$('#imgHtml1').html("distanceDiff:"+distanceDiff);
+				$('#imgHtml2').html("distanceOrigin:"+distanceOrigin);
+				$('#imgHtml3').html("distanceNow:"+distanceNow);
 				// myScroll.zoom(zoomNum);
 			}
 		});
