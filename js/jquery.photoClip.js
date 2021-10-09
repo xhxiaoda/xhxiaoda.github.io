@@ -244,7 +244,7 @@
 				distanceNow = distance;
 
 				const distanceDiff = distanceNow - distanceOrigin;
-				if(distanceDiff > 0 && zoomNum + distanceDiff >= 0){
+				if(zoomNum + distanceDiff >= 0){
 					zoomNum += distanceDiff;			
 				}
 
