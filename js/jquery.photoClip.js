@@ -222,9 +222,10 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("155222555");
+		$('#imgHtml').html("22555");
 		$('#touchBtn').bind('touchstart',function(e){
 			console.log($('#touchBtn').css('pointer-events'),222);
+			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
 			if (e.originalEvent.targetTouches.length > 1) {
 				$('#touchBtn').css({'pointer-events':'auto'})
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -240,7 +241,6 @@
 		});
 		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
-			e.preventDefault();
 			if (e.originalEvent.targetTouches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -269,10 +269,12 @@
 		});
 
 		$('.photo-clip-rotateLayer').bind('touchstart',function(e){
-			console.log($('#touchBtn').css('pointer-events'),333);
+			console.log($('#touchBtn').css('pointer-events'),333);			
 			if (e.originalEvent.targetTouches.length > 1) {
 				$('#touchBtn').css({'pointer-events':'auto'})
 			}
+
+			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
 		});
 
 		function getDistance(p1, p2) {
