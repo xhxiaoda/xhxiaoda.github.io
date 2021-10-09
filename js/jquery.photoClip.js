@@ -224,7 +224,7 @@
 
 		var istouch=false;
 
-		$('#imgHtml').html("2211");
+		$('#imgHtml').html("112211");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
