@@ -222,27 +222,24 @@
 				myScroll.zoom(sf);
 		});
 
-		var istouch=false;
-
-		$('#imgHtml').html("112211");
+		$('#imgHtml').html("122111");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
+				$('#touchBtn').css({'display':'block'})
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
 				//计算开始触发两个手指坐标的距离
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
-
-				istouch = true;
 			}else{
-
+				$('#touchBtn').css({'display':'none'})
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
-			if (e.originalEvent.targetTouches.length > 1 && istouch) {
+			if (e.originalEvent.targetTouches.length > 1) {
 				// $('#touchBtn').css({'pointer-events':''})
 				//双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -269,38 +266,32 @@
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
 				// $('#touchBtn').css({'pointer-events':'none'})
+				console.log($('.photo-clip-moveLayer').css('transform'),333);
 			}
 		});
 
-		$('#touchBtn').bind('touchend',function(e){	
-			istouch = false;
+		$('.photo-clip-view').bind('touchstart',function(e){
+			if (e.originalEvent.targetTouches.length > 1) {
+				$('#touchBtn').css({'display':'block'})
+			}else{
+				$('#touchBtn').css({'display':'none'})
+			}
 		});
-
-		// $('.photo-clip-view').bind('touchstart',function(e){
-		// 	if (e.originalEvent.targetTouches.length > 1) {
-		// 		istouch = true;
-		// 	}
-		// });
 
 		// $('.photo-clip-view').bind('touchmove',function(e){	
 		// 	if (e.originalEvent.targetTouches.length > 1 && istouch) {
 		// 		$('#touchBtn').css({'pointer-events':''})
 		// 	}else{
-		// 		$('#touchBtn').css({'pointer-events':'none'})
+		// 		// $('#touchBtn').css({'pointer-events':'none'})
+		// 		console.log($('.photo-clip-moveLayer').css('transform'),333);
 		// 	}
 
 		// 	$('#imgHtml').html($('#touchBtn').css('pointer-events'));
 		// });
 
 		// $('.photo-clip-view').bind('touchend',function(e){	
-		// 	istouch = false;
+		// 	$('#touchBtn').css({'display':'none'})
 		// });
-
-		function getDistance(p1, p2) {
-			var x = p2.pageX - p1.pageX,
-					y = p2.pageY - p1.pageY;
-			return Math.sqrt((x * x) + (y * y));
-		};
 
 		function initScroll() {
 			var options = {
