@@ -222,19 +222,16 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("111");
+		$('#imgHtml').html("1111");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
-				$('#touchBtn').css({'display':'block'})
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
 				//计算开始触发两个手指坐标的距离
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
-	
 				distanceOrigin = distance;
 			}else{
-				$('#touchBtn').css({'display':'none'})
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
@@ -270,13 +267,13 @@
 			}
 		});
 
-		$('.photo-clip-view').bind('touchstart',function(e){
-			if (e.originalEvent.targetTouches.length > 1) {
-				$('#touchBtn').css({'display':'block'})
-			}else{
-				$('#touchBtn').css({'display':'none'})
-			}
-		});
+		// $('.photo-clip-view').bind('touchstart',function(e){
+		// 	if (e.originalEvent.targetTouches.length > 1) {
+		// 		$('#touchBtn').css({'display':'block'})
+		// 	}else{
+		// 		$('#touchBtn').css({'display':'none'})
+		// 	}
+		// });
 
 		// $('.photo-clip-view').bind('touchmove',function(e){	
 		// 	if (e.originalEvent.targetTouches.length > 1 && istouch) {
