@@ -222,6 +222,7 @@
 				myScroll.zoom(sf);
 		});
 
+		$('#imgHtml').html("222");
 		$(touchBtn).bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {				
 				$(touchBtn).css({'display':'block'});
