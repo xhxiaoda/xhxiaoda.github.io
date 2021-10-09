@@ -244,8 +244,8 @@
 				distanceNow = distance;
 
 				const distanceDiff = distanceNow - distanceOrigin;
-				if(zoomNum + distanceDiff >= 0){
-					zoomNum += distanceDiff;			
+				if(zoomNum + 0.005 * distanceDiff >= 0){
+					zoomNum += 0.005 * distanceDiff;			
 				}
 
 				$('#imgHtml').html("zoomNum:"+zoomNum);
