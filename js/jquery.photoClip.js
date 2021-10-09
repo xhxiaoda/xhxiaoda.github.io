@@ -253,9 +253,11 @@
 					zoomNum -= 0.1;			
 				}
 
-				$('#imgHtml').html("zoomNum:"+zoomNum);
-
-				myScroll.zoom(zoomNum);
+				$('#imgHtml').html("zoomNum:"+zoomNum.toFixed(2));
+				if(zoomNum <= 0){
+					zoomNum = 0;
+				}
+				myScroll.zoom(zoomNum.toFixed(2) * 0.25);
 			}
 		});
 
