@@ -236,12 +236,14 @@
 				distanceOrigin = distance;
 
 				istouch = true;
+			}else{
+
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1 && istouch) {
-				$('#touchBtn').css({'pointer-events':''})
+				// $('#touchBtn').css({'pointer-events':''})
 				//双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
@@ -266,7 +268,7 @@
 				$('#imgHtml').html("111");
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
-				$('#touchBtn').css({'pointer-events':'none'})
+				// $('#touchBtn').css({'pointer-events':'none'})
 			}
 		});
 
@@ -274,25 +276,25 @@
 			istouch = false;
 		});
 
-		$('.photo-clip-view').bind('touchstart',function(e){
-			if (e.originalEvent.targetTouches.length > 1) {
-				istouch = true;
-			}
-		});
+		// $('.photo-clip-view').bind('touchstart',function(e){
+		// 	if (e.originalEvent.targetTouches.length > 1) {
+		// 		istouch = true;
+		// 	}
+		// });
 
-		$('.photo-clip-view').bind('touchmove',function(e){	
-			if (e.originalEvent.targetTouches.length > 1 && istouch) {
-				$('#touchBtn').css({'pointer-events':''})
-			}else{
-				$('#touchBtn').css({'pointer-events':'none'})
-			}
+		// $('.photo-clip-view').bind('touchmove',function(e){	
+		// 	if (e.originalEvent.targetTouches.length > 1 && istouch) {
+		// 		$('#touchBtn').css({'pointer-events':''})
+		// 	}else{
+		// 		$('#touchBtn').css({'pointer-events':'none'})
+		// 	}
 
-			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
-		});
+		// 	$('#imgHtml').html($('#touchBtn').css('pointer-events'));
+		// });
 
-		$('.photo-clip-view').bind('touchend',function(e){	
-			istouch = false;
-		});
+		// $('.photo-clip-view').bind('touchend',function(e){	
+		// 	istouch = false;
+		// });
 
 		function getDistance(p1, p2) {
 			var x = p2.pageX - p1.pageX,
