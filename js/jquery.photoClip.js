@@ -157,7 +157,6 @@
 
 		var $container, // 容器，包含裁剪视图层和遮罩层
 			$clipView, // 裁剪视图层，包含移动层
-			$bigImg, // 放大层，包含移动层
 			$moveLayer, // 移动层，包含旋转层
 			$rotateLayer, // 旋转层
 			$view, // 最终截图后呈现的视图容器
