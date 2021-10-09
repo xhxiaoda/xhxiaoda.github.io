@@ -222,9 +222,10 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("3335");
+		$('#imgHtml').html("113335");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
+				$('#touchBtn').css({'pointer-events':''})
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
@@ -232,6 +233,8 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
+			}else{
+				$('#touchBtn').css({'pointer-events':'none'})
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
@@ -261,6 +264,14 @@
 				}
 				$('#imgHtml').html("111");
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
+			}else{
+				$('#touchBtn').css({'pointer-events':'none'})
+			}
+		});
+
+		$('.photo-clip-rotateLayer').bind('touchstart',function(e){	
+			if (e.originalEvent.targetTouches.length > 1) {
+				$('#touchBtn').css({'pointer-events':''})
 			}else{
 				$('#touchBtn').css({'pointer-events':'none'})
 			}
