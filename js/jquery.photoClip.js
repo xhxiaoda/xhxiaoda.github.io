@@ -253,24 +253,22 @@
 				}
 
 				myScroll.zoom(zoomNum);
-
-				alert(distanceNow,distanceOrigin,333);
 			}
 		});
 
-		$(touchBtn).on('touchend',function(e){
-			const distanceDiff = distanceNow - distanceOrigin;
-			// newScale = tempData?.scale + 0.005 * distanceDiff
-			if(distanceDiff > 0){
-				zoomNum += distanceDiff;
-			}else if(distanceDiff < 0){
-				if(zoomNum - distanceDiff >= 0){
-					zoomNum -= distanceDiff;
-				}
-			}
+		// $(touchBtn).on('touchend',function(e){
+		// 	const distanceDiff = distanceNow - distanceOrigin;
+		// 	// newScale = tempData?.scale + 0.005 * distanceDiff
+		// 	if(distanceDiff > 0){
+		// 		zoomNum += distanceDiff;
+		// 	}else if(distanceDiff < 0){
+		// 		if(zoomNum - distanceDiff >= 0){
+		// 			zoomNum -= distanceDiff;
+		// 		}
+		// 	}
 
-			myScroll.zoom(zoomNum);
-		});
+		// 	myScroll.zoom(zoomNum);
+		// });
 
 		function initScroll() {
 			var options = {
