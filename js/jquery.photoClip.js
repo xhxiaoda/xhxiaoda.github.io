@@ -222,7 +222,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("22211");
+		$('#imgHtml').html("1122211");
 		$('.photo-clip-moveLayer').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -327,18 +327,18 @@
 					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
 				});
 
-				hammerManager.on("rotateend", function(e) {
-					if (atRotation) return;
-					if (Math.abs(rotation) > 30) {
-						if (rotateDirection == 1) {
-							// 顺时针
-							rotateCW(e.center);
-						} else if (rotateDirection == -1) {
-							// 逆时针
-							rotateCCW(e.center);
-						}
-					}
-				});
+				// hammerManager.on("rotateend", function(e) {
+				// 	if (atRotation) return;
+				// 	if (Math.abs(rotation) > 30) {
+				// 		if (rotateDirection == 1) {
+				// 			// 顺时针
+				// 			rotateCW(e.center);
+				// 		} else if (rotateDirection == -1) {
+				// 			// 逆时针
+				// 			rotateCCW(e.center);
+				// 		}
+				// 	}
+				// });
 				rotateW();	
 			} else {
 				rotateW();
