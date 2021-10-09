@@ -222,8 +222,8 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("211");
-		$(touchBtn).bind('touchstart',function(e){
+		$('#imgHtml').html("22211");
+		$('.photo-clip-moveLayer').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -234,7 +234,7 @@
 				distanceOrigin = distance;
 			}
 		});
-		$(touchBtn).bind('touchmove',function(e){
+		$('.photo-clip-moveLayer').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
