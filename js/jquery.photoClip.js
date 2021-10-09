@@ -248,11 +248,11 @@
 				$('#imgHtml').html("zoomNum:"+zoomNum);
 				$('#imgHtml1').html("distanceDiff:"+distanceDiff);
 				
-				if(distanceDiff > 0 && zoom < 4){
+				if(distanceDiff > 0 && zoomNum < 4){
 					zoomNum += 0.1;			
 				}
 
-				if(distanceDiff < 0 && zoom > 0){
+				if(distanceDiff < 0 && zoomNum > 0){
 					zoomNum -= 0.1;			
 				}
 
