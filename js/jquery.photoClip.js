@@ -222,9 +222,10 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("12224441");
-		$('#clipArea').bind('touchstart',function(e){
+		$('#imgHtml').html("155555");
+		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
+				$('#touchBtn').css({'pointer-events':'auto'})
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
@@ -232,10 +233,13 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
+			}else{
+				$('#touchBtn').css({'pointer-events':'none'})
 			}
 		});
-		$('#clipArea').bind('touchmove',function(e){
+		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
+			e.preventDefault();
 			if (e.originalEvent.targetTouches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -245,7 +249,7 @@
 				
 				distanceNow = distance;
 
-				const distanceDiff = distanceNow - distanceOrigin;
+				const distanceDiff = distanceNow/distanceOrigin;
 				
 				if(distanceDiff > 0 && touchmoveNum < 4){
 					touchmoveNum += 0.01;			
@@ -262,6 +266,18 @@
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}
 		});
+
+		$('#clipArea').bind('touchstart',function(e){
+			if (e.originalEvent.targetTouches.length > 1) {
+				$('#touchBtn').css({'pointer-events':'auto'})
+			}
+		});
+
+		function getDistance(p1, p2) {
+			var x = p2.pageX - p1.pageX,
+					y = p2.pageY - p1.pageY;
+			return Math.sqrt((x * x) + (y * y));
+		};
 
 		function initScroll() {
 			var options = {
