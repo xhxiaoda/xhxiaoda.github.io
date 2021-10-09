@@ -223,7 +223,7 @@
 		});
 
 		$('#imgHtml').html("14441");
-		$('.photo-clip-moveLayer').bind('touchstart',function(e){
+		$('#clipArea').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -234,7 +234,7 @@
 				distanceOrigin = distance;
 			}
 		});
-		$('.photo-clip-moveLayer').bind('touchmove',function(e){
+		$('#clipArea').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
@@ -312,20 +312,20 @@
 
 			if (is_mobile) {
 				var hammerManager = new Hammer($moveLayer[0]);
-				// hammerManager.add(new Hammer.Rotate());
+				hammerManager.add(new Hammer.Rotate());
 
-				// var rotation, rotateDirection;
+				var rotation, rotateDirection;
 
-				// hammerManager.on("rotatemove", function(e) {
-				// 	if (atRotation) return;
-				// 	rotation = e.rotation;
-				// 	if (rotation > 180) {
-				// 		rotation -= 360;
-				// 	} else if (rotation < -180) {
-				// 		rotation += 360  ;
-				// 	}
-				// 	rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
-				// });
+				hammerManager.on("rotatemove", function(e) {
+					if (atRotation) return;
+					rotation = e.rotation;
+					if (rotation > 180) {
+						rotation -= 360;
+					} else if (rotation < -180) {
+						rotation += 360  ;
+					}
+					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
+				});
 
 				// hammerManager.on("rotateend", function(e) {
 				// 	if (atRotation) return;
