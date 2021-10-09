@@ -222,7 +222,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("155555");
+		$('#imgHtml').html("155222555");
 		$('#touchBtn').bind('touchstart',function(e){
 			console.log($('#touchBtn').css('pointer-events'),222);
 			if (e.originalEvent.targetTouches.length > 1) {
