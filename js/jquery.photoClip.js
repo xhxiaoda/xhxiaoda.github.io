@@ -55,7 +55,7 @@
 			rotateInit:'',
 			bigBtn: "",
 			smallBtn: "",
-			touch:'',
+			touchBtn:'',
 			loadStart: function() {},
 			loadComplete: function() {},
 			loadError: function() {},
@@ -81,7 +81,7 @@
 			rotateInit = option.rotateInit,
 			bigBtn = option.bigBtn,
 			smallBtn = option.smallBtn,
-			touch = option.touch,
+			touchBtn = option.touchBtn,
 			//outputType = option.outputType || "image/jpeg",
 			outputType = "image/jpeg",
 			loadStart = option.loadStart,
@@ -221,7 +221,8 @@
 				myScroll.zoom(sf);
 		});
 
-		$(touch).on('touchstart',function(e){
+		$(touchBtn).on('touchstart',function(e){
+			alert(11);
 			if (e.touches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.touches[1].clientX - e.touches[0].clientX;
@@ -232,7 +233,8 @@
 				distanceOrigin = distance;
 			}
 		});
-		$(touch).on('touchmove',function(e){
+		$(touchBtn).on('touchmove',function(e){
+			alert(222);
 			// 单手指缩放不做任何操作
 			if (e.touches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
@@ -258,19 +260,19 @@
 			}
 		});
 
-		// $(touch).on('touchend',function(e){
-		// 	const distanceDiff = distanceNow - distanceOrigin;
-		// 	// newScale = tempData?.scale + 0.005 * distanceDiff
-		// 	if(distanceDiff > 0){
-		// 		zoomNum += distanceDiff;
-		// 	}else if(distanceDiff < 0){
-		// 		if(zoomNum - distanceDiff >= 0){
-		// 			zoomNum -= distanceDiff;
-		// 		}
-		// 	}
+		$(touchBtn).on('touchend',function(e){
+			const distanceDiff = distanceNow - distanceOrigin;
+			// newScale = tempData?.scale + 0.005 * distanceDiff
+			if(distanceDiff > 0){
+				zoomNum += distanceDiff;
+			}else if(distanceDiff < 0){
+				if(zoomNum - distanceDiff >= 0){
+					zoomNum -= distanceDiff;
+				}
+			}
 
-		// 	myScroll.zoom(zoomNum);
-		// });
+			myScroll.zoom(zoomNum);
+		});
 
 		function initScroll() {
 			var options = {
@@ -808,3 +810,4 @@
 
 	return $;
 }));
+
