@@ -205,7 +205,8 @@
 
 			loadComplete.call(this, this.src);
 		}
-		var zoomNum = 0;
+		var zoomNum = 0,
+				touchmoveNum = 1.5;
 		$(bigBtn).click(function(){
 			if(zoomNum < 4){
 				zoomNum++;
@@ -245,20 +246,20 @@
 
 				const distanceDiff = distanceNow - distanceOrigin;
 				
-				if(distanceDiff > 0 && zoomNum < 4){
-					zoomNum += 0.01;			
+				if(distanceDiff > 0 && touchmoveNum < 4){
+					touchmoveNum += 0.01;			
 				}
 
-				if(distanceDiff < 0 && zoomNum > 0){
-					zoomNum -= 0.01;			
+				if(distanceDiff < 0 && touchmoveNum > 1.5){
+					touchmoveNum -= 0.01;			
 				}
 
-				if(zoomNum <= 0){
-					zoomNum = 0;
+				if(touchmoveNum <= 1.5){
+					touchmoveNum = 1.5;
 				}
 
-				$('#imgHtml').html("zoomNum:"+zoomNum.toFixed(2));
-				myScroll.zoom(zoomNum.toFixed(2) * 0.25);
+				$('#imgHtml').html("zoomNum11:"+touchmoveNum.toFixed(2));
+				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}
 		});
 
