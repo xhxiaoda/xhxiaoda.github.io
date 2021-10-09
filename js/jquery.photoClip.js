@@ -222,7 +222,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("122111");
+		$('#imgHtml').html("111");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
