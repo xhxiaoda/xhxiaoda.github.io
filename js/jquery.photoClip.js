@@ -251,8 +251,8 @@
 						zoomNum -= distanceDiff;
 					}
 				}
-
-				myScroll.zoom(zoomNum);
+				$('#imgHtml').html(zoomNum);
+				// myScroll.zoom(zoomNum);
 			}
 		});
 
