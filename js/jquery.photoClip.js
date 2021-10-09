@@ -224,8 +224,8 @@
 		$(touchBtn).on('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
-				const xMove = e.touches[1].clientX - e.touches[0].clientX;
-				const yMove = e.touches[1].clientY - e.touches[0].clientY;
+				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
+				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
 				//计算开始触发两个手指坐标的距离
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
@@ -236,8 +236,8 @@
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
-				const xMove = e.touches[1].clientX - e.touches[0].clientX;
-				const yMove = e.touches[1].clientY - e.touches[0].clientY;
+				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
+				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
 				//双手指运动新的 ditance
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 				
