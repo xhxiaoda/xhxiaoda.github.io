@@ -231,6 +231,8 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
+			}else{
+				$(touchBtn).css({'display':'none'});
 			}
 		});
 		$(touchBtn).bind('touchmove',function(e){
@@ -257,9 +259,13 @@
 				if(touchmoveNum <= 1.5){
 					touchmoveNum = 1.5;
 				}
-
-				$('#imgHtml').html("zoomNum11:"+touchmoveNum.toFixed(2));
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
+			}
+		});
+
+		$("#clipArea").bind('touchstart',function(e){
+			if (e.originalEvent.targetTouches.length > 1) {
+				$(touchBtn).css({'display':'block'});
 			}
 		});
 
