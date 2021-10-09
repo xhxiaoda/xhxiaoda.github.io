@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("1122211");
+		$('#imgHtml').html("14441");
 		$('.photo-clip-moveLayer').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
