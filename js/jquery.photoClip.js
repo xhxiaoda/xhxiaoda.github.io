@@ -246,7 +246,7 @@
 				
 				distanceNow = distance;
 
-				const distanceDiff = distanceNow/distanceOrigin;
+				const distanceDiff = distanceNow - distanceOrigin;
 				
 				if(distanceDiff > 0 && touchmoveNum < 4){
 					touchmoveNum += 0.01;			
@@ -266,9 +266,11 @@
 			}
 		});
 
-		$('.photo-clip-rotateLayer').bind('touchstart',function(e){	
+		$('.photo-clip-rotateLayer').bind('touchmove',function(e){	
 			if (e.originalEvent.targetTouches.length > 1) {
 				$('#touchBtn').css({'pointer-events':''})
+			}else{
+				$('#touchBtn').css({'pointer-events':'none'})
 			}
 
 			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
