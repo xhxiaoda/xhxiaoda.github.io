@@ -222,7 +222,7 @@
 		});
 
 		$(touchBtn).on('touchstart',function(e){
-			if (e.touches.length > 1) {
+			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.touches[1].clientX - e.touches[0].clientX;
 				const yMove = e.touches[1].clientY - e.touches[0].clientY;
@@ -234,7 +234,7 @@
 		});
 		$(touchBtn).on('touchmove',function(e){
 			// 单手指缩放不做任何操作
-			if (e.touches.length > 1) {
+			if (e.originalEvent.targetTouches.length > 1) {
 				//双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.touches[1].clientX - e.touches[0].clientX;
 				const yMove = e.touches[1].clientY - e.touches[0].clientY;
