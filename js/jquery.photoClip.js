@@ -222,21 +222,17 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("3335222");
+		$('#imgHtml').html("555");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
-				$('#touchBtn').css({'pointer-events':''})
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
 				//计算开始触发两个手指坐标的距离
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
-			}else{
-				$('#touchBtn').css({'pointer-events':'none'})
 			}
-			console.log($('#touchBtn').css('pointer-events'),111);
 		});
 		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
@@ -277,14 +273,6 @@
 				$('#touchBtn').css({'pointer-events':'none'})
 			}
 
-			console.log($('#touchBtn').css('pointer-events'),222);
-			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
-		});
-
-		$('.photo-clip-view').bind('touchend',function(e){
-			$('#touchBtn').css({'pointer-events':''})
-	
-			console.log($('#touchBtn').css('pointer-events'),333);
 			$('#imgHtml').html($('#touchBtn').css('pointer-events'));
 		});
 
