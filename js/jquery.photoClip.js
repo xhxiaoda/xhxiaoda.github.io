@@ -311,22 +311,22 @@
 		function initEvent() {
 			var is_mobile = !!navigator.userAgent.match(/mobile/i);
 
-			// if (is_mobile) {
-			// 	var hammerManager = new Hammer($moveLayer[0]);
-			// 	hammerManager.add(new Hammer.Rotate());
+			if (is_mobile) {
+				var hammerManager = new Hammer($moveLayer[0]);
+				// hammerManager.add(new Hammer.Rotate());
 
-			// 	var rotation, rotateDirection;
+				// var rotation, rotateDirection;
 
-			// 	hammerManager.on("rotatemove", function(e) {
-			// 		if (atRotation) return;
-			// 		rotation = e.rotation;
-			// 		if (rotation > 180) {
-			// 			rotation -= 360;
-			// 		} else if (rotation < -180) {
-			// 			rotation += 360  ;
-			// 		}
-			// 		rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
-			// 	});
+				// hammerManager.on("rotatemove", function(e) {
+				// 	if (atRotation) return;
+				// 	rotation = e.rotation;
+				// 	if (rotation > 180) {
+				// 		rotation -= 360;
+				// 	} else if (rotation < -180) {
+				// 		rotation += 360  ;
+				// 	}
+				// 	rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
+				// });
 
 				// hammerManager.on("rotateend", function(e) {
 				// 	if (atRotation) return;
@@ -341,9 +341,9 @@
 				// 	}
 				// });
 				rotateW();	
-			// } else {
-			// 	rotateW();
-			// }
+			} else {
+				rotateW();
+			}
 		}
 
 		function rotateW(){
