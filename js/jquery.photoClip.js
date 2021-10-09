@@ -244,14 +244,16 @@
 				distanceNow = distance;
 
 				const distanceDiff = distanceNow - distanceOrigin;
-				if(zoomNum + 0.005 * distanceDiff >= 0){
-					zoomNum += 0.005 * distanceDiff;			
+				if(distanceDiff > 0 && zoom < 4){
+					zoomNum += 0.1;			
+				}
+
+				if(distanceDiff < 0 && zoom > 0){
+					zoomNum -= 0.1;			
 				}
 
 				$('#imgHtml').html("zoomNum:"+zoomNum);
 				$('#imgHtml1').html("distanceDiff:"+distanceDiff);
-				$('#imgHtml2').html("distanceOrigin:"+distanceOrigin);
-				$('#imgHtml3').html("distanceNow:"+distanceNow);
 				myScroll.zoom(zoomNum);
 			}
 		});
