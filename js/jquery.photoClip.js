@@ -246,17 +246,17 @@
 				const distanceDiff = distanceNow - distanceOrigin;
 				
 				if(distanceDiff > 0 && zoomNum < 4){
-					zoomNum += 0.001;			
+					zoomNum += 0.01;			
 				}
 
 				if(distanceDiff < 0 && zoomNum > 0){
-					zoomNum -= 0.001;			
+					zoomNum -= 0.01;			
 				}
 
 				if(zoomNum <= 0){
 					zoomNum = 0;
 				}
-				
+
 				$('#imgHtml').html("zoomNum:"+zoomNum.toFixed(2));
 				myScroll.zoom(zoomNum.toFixed(2) * 0.25);
 			}
