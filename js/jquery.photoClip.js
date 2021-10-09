@@ -224,6 +224,7 @@
 
 		$('#imgHtml').html("155555");
 		$('#touchBtn').bind('touchstart',function(e){
+			console.log($('#touchBtn').css('pointer-events'),222);
 			if (e.originalEvent.targetTouches.length > 1) {
 				$('#touchBtn').css({'pointer-events':'auto'})
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -267,7 +268,8 @@
 			}
 		});
 
-		$('#clipArea').bind('touchstart',function(e){
+		$('.photo-clip-rotateLayer').bind('touchstart',function(e){
+			console.log($('#touchBtn').css('pointer-events'),333);
 			if (e.originalEvent.targetTouches.length > 1) {
 				$('#touchBtn').css({'pointer-events':'auto'})
 			}
