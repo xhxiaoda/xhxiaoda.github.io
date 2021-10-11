@@ -158,6 +158,7 @@
 		var $container, // 容器，包含裁剪视图层和遮罩层
 			$clipView, // 裁剪视图层，包含移动层
 			$moveLayer, // 移动层，包含旋转层
+			$pinchLayer, // 双指放大层，
 			$rotateLayer, // 旋转层
 			$view, // 最终截图后呈现的视图容器
 			canvas, // 图片裁剪用到的画布
@@ -238,11 +239,10 @@
 		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
-				// $('#touchBtn').css({'pointer-events':''})
-				//双手指运动 x移动后的坐标和y移动后的坐标
+				// 双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
-				//双手指运动新的 ditance
+				// 双手指运动新的 ditance
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 				
 				distanceNow = distance;
@@ -263,8 +263,8 @@
 				$('#imgHtml').html("111");
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
-				// $('#touchBtn').css({'pointer-events':'none'})
 				console.log($('.photo-clip-moveLayer').css('transform'),333);
+				
 			}
 		});
 
@@ -320,47 +320,10 @@
 				hammerManager.add(new Hammer.Rotate());
 				hammerManager.add(new Hammer.Pinch());
 
-				// hammerManager.on('pinch,pan panmove swipe swipeup press pressup', function (ev) {
-				// 	//回调
-				// 	console.log(ev);
-				// });
-
-				var rotation, rotateDirection;
-
 				hammerManager.on("rotatemove", function(e) {
 					if (atRotation) return;
-					rotation = e.rotation;
-					if (rotation > 180) {
-						rotation -= 360;
-					} else if (rotation < -180) {
-						rotation += 360  ;
-					}
-					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
 				});
 
-				hammerManager.on("pinch ", function(e) {
-					if (atRotation) return;
-					rotation = e.rotation;
-					if (rotation > 180) {
-						rotation -= 360;
-					} else if (rotation < -180) {
-						rotation += 360  ;
-					}
-					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
-				});
-
-				// hammerManager.on("rotateend", function(e) {
-				// 	if (atRotation) return;
-				// 	if (Math.abs(rotation) > 30) {
-				// 		if (rotateDirection == 1) {
-				// 			// 顺时针
-				// 			rotateCW(e.center);
-				// 		} else if (rotateDirection == -1) {
-				// 			// 逆时针
-				// 			rotateCCW(e.center);
-				// 		}
-				// 	}
-				// });
 				rotateW();	
 			} else {
 				rotateW();
@@ -719,7 +682,9 @@
 
 			$moveLayer = $("<div class='photo-clip-moveLayer'>").appendTo($clipView);
 
-			$rotateLayer = $("<div class='photo-clip-rotateLayer'>").appendTo($moveLayer);
+			$pinchLayer = $("<div class='photo-clip-pinchLayer'>").appendTo($moveLayer);
+
+			$rotateLayer = $("<div class='photo-clip-rotateLayer'>").appendTo($pinchLayer);
 
 			// 创建遮罩
 			var $mask = $("<div class='photo-clip-mask'>").css({
