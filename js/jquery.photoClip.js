@@ -343,7 +343,7 @@
 				// hammerManager.add(new Hammer.Rotate());
 				hammerManager.add(new Hammer.Pinch());
 
-				hammerManager.on("pinch,pan", function (ev) {   
+				hammerManager.on("pinch pan", function (ev) {   
 					console.log('缩放=>', ev.scale)
 				});
 
