@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("4444");
+		$('#imgHtml').html("5555");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -271,14 +271,10 @@
 			}
 		});
 
-		$('#clipArea').bind('touchstart',function(e){		
-			if (e.originalEvent.targetTouches.length > 1) {
+		$('#clipArea').bind('touchmove',function(e){
+			if (e.originalEvent.targetTouches.length > 1) {		
 				$('#touchBtn').css({'pointer-events': ''});
 			}
-		});
-
-		$('#clipArea').bind('touchend',function(e){
-			$('#touchBtn').css({'pointer-events': ''});
 		});
 
 		function initScroll() {
