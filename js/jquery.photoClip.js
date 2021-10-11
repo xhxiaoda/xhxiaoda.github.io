@@ -158,7 +158,6 @@
 		var $container, // 容器，包含裁剪视图层和遮罩层
 			$clipView, // 裁剪视图层，包含移动层
 			$moveLayer, // 移动层，包含旋转层
-			$pinchLayer, // 双指放大层，
 			$rotateLayer, // 旋转层
 			$view, // 最终截图后呈现的视图容器
 			canvas, // 图片裁剪用到的画布
@@ -188,7 +187,8 @@
 			curAngle; // 旋转层的当前角度
 
 		var distanceOrigin, //双指之间原始距离
-				distanceNow; // 双指移动后的差值
+				distanceNow, // 双指移动后的差值
+				oneFingerMoveOrigin;
 
 		function imgLoad() {
 			imgLoaded = true;
@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("8888");
+		$('#imgHtml').html("1111");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -234,9 +234,13 @@
 	
 				distanceOrigin = distance;
 			}else{
+				const xMove = e.originalEvent.targetTouches[0].clientX;
+				const yMove = e.originalEvent.targetTouches[0].clientY;
+				oneFingerMoveOrigin = {x:xMove,y:yMove};
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
+			console.log(e);
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 双手指运动 x移动后的坐标和y移动后的坐标
@@ -263,9 +267,16 @@
 				$('#imgHtml').html("111");
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
-				console.log($('.photo-clip-moveLayer').css('transform'),333);
-				console.log(myScroll);
+				$('#touchBtn').css({'pointer-events': 'none'});
+				// const xMove = e.originalEvent.targetTouches[0].clientX;
+				// const yMove = e.originalEvent.targetTouches[0].clientY;
+
+				// myScroll.scrollTo((xMove - oneFingerMoveOrigin.x) * myScroll.scale, (yMove - oneFingerMoveOrigin.y) * myScroll.scale);
 			}
+		});
+
+		$('#clipArea').bind('touchend',function(e){
+			$('#touchBtn').css({'pointer-events': ''});
 		});
 
 		function initScroll() {
@@ -682,9 +693,7 @@
 
 			$moveLayer = $("<div class='photo-clip-moveLayer'>").appendTo($clipView);
 
-			$pinchLayer = $("<div class='photo-clip-pinchLayer'>").appendTo($moveLayer);
-
-			$rotateLayer = $("<div class='photo-clip-rotateLayer'>").appendTo($pinchLayer);
+			$rotateLayer = $("<div class='photo-clip-rotateLayer'>").appendTo($moveLayer);
 
 			// 创建遮罩
 			var $mask = $("<div class='photo-clip-mask'>").css({
