@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("7777");
+		$('#imgHtml').html("8888");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -264,7 +264,7 @@
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
 				console.log($('.photo-clip-moveLayer').css('transform'),333);
-				
+				console.log(myScroll);
 			}
 		});
 
@@ -318,7 +318,7 @@
 			if (is_mobile) {
 				var hammerManager = new Hammer($moveLayer[0]);
 				hammerManager.add(new Hammer.Rotate());
-				hammerManager.add(new Hammer.Pinch());
+				// hammerManager.add(new Hammer.Pinch());
 
 				hammerManager.on("rotatemove", function(e) {
 					if (atRotation) return;
