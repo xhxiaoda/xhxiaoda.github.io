@@ -239,6 +239,7 @@
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
+			e.stopPropagation()
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {		
 				// 双手指运动 x移动后的坐标和y移动后的坐标
