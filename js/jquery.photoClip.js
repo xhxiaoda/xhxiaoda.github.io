@@ -273,8 +273,8 @@
 				const curmovedistanceX = (e.originalEvent.targetTouches[0].clientX - oneFingerMoveOrigin.x) * 0.1;
 				const curmovedistanceY = (e.originalEvent.targetTouches[0].clientY - oneFingerMoveOrigin.y) * 0.1;
 
-				const curboxWidth = $('.photo-clip-view').width();
-				const curboxHeight = $('.photo-clip-view').height();
+				const curboxWidth = containerWidth;
+				const curboxHeight = containerHeight;
 
 				var curPosObjX,curPosObjY;
 
