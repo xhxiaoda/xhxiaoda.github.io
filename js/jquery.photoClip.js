@@ -222,7 +222,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("4444");
+		$('#imgHtml').html("6666");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -268,29 +268,6 @@
 			}
 		});
 
-		// $('.photo-clip-view').bind('touchstart',function(e){
-		// 	if (e.originalEvent.targetTouches.length > 1) {
-		// 		$('#touchBtn').css({'display':'block'})
-		// 	}else{
-		// 		$('#touchBtn').css({'display':'none'})
-		// 	}
-		// });
-
-		// $('.photo-clip-view').bind('touchmove',function(e){	
-		// 	if (e.originalEvent.targetTouches.length > 1 && istouch) {
-		// 		$('#touchBtn').css({'pointer-events':''})
-		// 	}else{
-		// 		// $('#touchBtn').css({'pointer-events':'none'})
-		// 		console.log($('.photo-clip-moveLayer').css('transform'),333);
-		// 	}
-
-		// 	$('#imgHtml').html($('#touchBtn').css('pointer-events'));
-		// });
-
-		// $('.photo-clip-view').bind('touchend',function(e){	
-		// 	$('#touchBtn').css({'display':'none'})
-		// });
-	
 		function initScroll() {
 			var options = {
 				zoom: true,
@@ -340,25 +317,37 @@
 
 			if (is_mobile) {
 				var hammerManager = new Hammer($moveLayer[0]);
-				// hammerManager.add(new Hammer.Rotate());
+				hammerManager.add(new Hammer.Rotate());
 				hammerManager.add(new Hammer.Pinch());
 
-				hammerManager.on("pinch pan", function (ev) {   
-					console.log('缩放=>', ev.scale)
+				// hammerManager.on('pinch,pan panmove swipe swipeup press pressup', function (ev) {
+				// 	//回调
+				// 	console.log(ev);
+				// });
+
+				var rotation, rotateDirection;
+
+				hammerManager.on("rotatemove", function(e) {
+					if (atRotation) return;
+					rotation = e.rotation;
+					if (rotation > 180) {
+						rotation -= 360;
+					} else if (rotation < -180) {
+						rotation += 360  ;
+					}
+					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
 				});
 
-				// var rotation, rotateDirection;
-
-				// hammerManager.on("rotatemove", function(e) {
-				// 	if (atRotation) return;
-				// 	rotation = e.rotation;
-				// 	if (rotation > 180) {
-				// 		rotation -= 360;
-				// 	} else if (rotation < -180) {
-				// 		rotation += 360  ;
-				// 	}
-				// 	rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
-				// });
+				hammerManager.on("pinch ", function(e) {
+					if (atRotation) return;
+					rotation = e.rotation;
+					if (rotation > 180) {
+						rotation -= 360;
+					} else if (rotation < -180) {
+						rotation += 360  ;
+					}
+					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
+				});
 
 				// hammerManager.on("rotateend", function(e) {
 				// 	if (atRotation) return;
