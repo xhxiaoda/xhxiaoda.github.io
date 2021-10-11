@@ -281,9 +281,7 @@
 			isMoveFlags = false;
 			if (e.originalEvent.targetTouches.length > 1 && !isMoveFlag) {
 				isMoveFlag = true;
-				setTimeout(function(){
-					$('#touchBtn').css({'pointer-events': ''});
-				},500)
+				$('#touchBtn').css({'pointer-events': ''});
 			}
 		});
 
