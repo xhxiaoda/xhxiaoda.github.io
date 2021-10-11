@@ -222,19 +222,20 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("11211");
-		$('.photo-clip-view').bind('touchstart',function(e){
+		$('#imgHtml').html("2222");
+		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
 				//计算开始触发两个手指坐标的距离
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
+	
 				distanceOrigin = distance;
 			}else{
 			}
 		});
-		$('.photo-clip-view').bind('touchmove',function(e){
+		$('#touchBtn').bind('touchmove',function(e){
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {
 				// $('#touchBtn').css({'pointer-events':''})
@@ -289,7 +290,7 @@
 		// $('.photo-clip-view').bind('touchend',function(e){	
 		// 	$('#touchBtn').css({'display':'none'})
 		// });
-
+	
 		function initScroll() {
 			var options = {
 				zoom: true,
@@ -339,20 +340,21 @@
 
 			if (is_mobile) {
 				var hammerManager = new Hammer($moveLayer[0]);
-				hammerManager.add(new Hammer.Rotate());
+				// hammerManager.add(new Hammer.Rotate());
+				hammerManager.add(new Hammer.Pinch());
 
-				var rotation, rotateDirection;
+				// var rotation, rotateDirection;
 
-				hammerManager.on("rotatemove", function(e) {
-					if (atRotation) return;
-					rotation = e.rotation;
-					if (rotation > 180) {
-						rotation -= 360;
-					} else if (rotation < -180) {
-						rotation += 360  ;
-					}
-					rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
-				});
+				// hammerManager.on("rotatemove", function(e) {
+				// 	if (atRotation) return;
+				// 	rotation = e.rotation;
+				// 	if (rotation > 180) {
+				// 		rotation -= 360;
+				// 	} else if (rotation < -180) {
+				// 		rotation += 360  ;
+				// 	}
+				// 	rotateDirection = rotation > 0 ? 1 : rotation < 0 ? -1 : 0;
+				// });
 
 				// hammerManager.on("rotateend", function(e) {
 				// 	if (atRotation) return;
