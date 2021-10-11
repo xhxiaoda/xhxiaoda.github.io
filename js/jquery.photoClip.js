@@ -240,9 +240,9 @@
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
-			console.log(e);
+			$('#touchBtn').css({'pointer-events': ''});
 			// 单手指缩放不做任何操作
-			if (e.originalEvent.targetTouches.length > 1) {
+			if (e.originalEvent.targetTouches.length > 1) {		
 				// 双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
@@ -268,10 +268,6 @@
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
 				$('#touchBtn').css({'pointer-events': 'none'});
-				// const xMove = e.originalEvent.targetTouches[0].clientX;
-				// const yMove = e.originalEvent.targetTouches[0].clientY;
-
-				// myScroll.scrollTo((xMove - oneFingerMoveOrigin.x) * myScroll.scale, (yMove - oneFingerMoveOrigin.y) * myScroll.scale);
 			}
 		});
 
