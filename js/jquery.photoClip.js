@@ -275,8 +275,6 @@
 				const curboxWidth = $('.photo-clip-view').width();
 				const curboxHeight = $('.photo-clip-view').height();
 
-				console.log($('.photo-clip-moveLayer').css('transform'),333);
-
 				var curPosObjX,curPosObjY;
 
 				if(curAngle === 0 || curAngle === 180){
@@ -320,10 +318,6 @@
 				$('.photo-clip-moveLayer').css({'transform':curTransform.join(',')})
 
 			}
-		});
-
-		$('.photo-clip-moveLayer').bind('touchmove',function(e){
-			console.log($('.photo-clip-moveLayer').css('transform'),333);
 		});
 
 		function initScroll() {
