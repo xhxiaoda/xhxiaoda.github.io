@@ -269,9 +269,7 @@
 			}else{
 				if(!isMoveFlags){
 					isMoveFlags = true;
-					setTimeout(function(){
-						$('#touchBtn').css({'pointer-events': 'none'});
-					},500)	
+					$('#touchBtn').css({'pointer-events': 'none'});
 				}
 					
 			}
