@@ -55,7 +55,7 @@
 		position: absolute;
 		top: 8px;
 		left: 8px;
-		width: 398px;
+		width: calc(100% - 16px);
 		height: 300px;
 		z-index: 100;
 	}
@@ -90,12 +90,12 @@
 <script>
 	$(function(){
 			clip();
-			$('.photo-clip-view').css({'overflow':'hidden'})	
+			$('.photo-clip-view').css({'overflow':'hidden'});
 	});
 
 	function clip(){
 		$("#clipArea").photoClip({
-			size: [398, 300],
+			size: [$('#clipArea').width(), 300],
 			file: "#file",
 			ok: "#clipBtn",
 			view:"#imgcav",
@@ -105,7 +105,7 @@
 			bigBtn:'#bigImg',
 			smallBtn:'#smallImg',
 			touchBtn:"#touchBtn",
-			outputSize:[398, 300],
+			outputSize:[$('#clipArea').width(), 300],
 			loadStart: function() {
 				console.log("照片读取中");
 			},
