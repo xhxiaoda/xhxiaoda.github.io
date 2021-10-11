@@ -343,6 +343,10 @@
 				// hammerManager.add(new Hammer.Rotate());
 				hammerManager.add(new Hammer.Pinch());
 
+				hammertime.on("pinch", function (ev) {   
+					console.log('缩放=>', ev.scale)
+				});
+
 				// var rotation, rotateDirection;
 
 				// hammerManager.on("rotatemove", function(e) {
