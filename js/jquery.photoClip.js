@@ -188,7 +188,7 @@
 
 		var distanceOrigin, //双指之间原始距离
 				distanceNow, // 双指移动后的差值
-				oneFingerMoveOrigin;
+				isMoveFlag = false,isMoveFlags = false;
 
 		function imgLoad() {
 			imgLoaded = true;
@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("4444");
+		$('#imgHtml').html("5555");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -240,7 +240,7 @@
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
-			$('#touchBtn').css({'pointer-events': ''});
+			isMoveFlag = true;
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {		
 				// 双手指运动 x移动后的坐标和y移动后的坐标
@@ -266,15 +266,30 @@
 				}
 				$('#imgHtml').html("111");
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
-				$('#touchBtn').css({'pointer-events': ''});
 			}else{
-				$('#touchBtn').css({'pointer-events': 'none'});
+				if(!isMoveFlags){
+					isMoveFlags = true;
+					setTimeout(function(){
+						$('#touchBtn').css({'pointer-events': 'none'});
+					},500)	
+				}
+					
 			}
 		});
 
-		$('#clipArea').bind('touchend',function(e){
-			$('#touchBtn').css({'pointer-events': ''});
+		$('#clipArea').bind('touchmove',function(e){
+			isMoveFlags = false;
+			if (e.originalEvent.targetTouches.length > 1 && !isMoveFlag) {
+				isMoveFlag = true;
+				setTimeout(function(){
+					$('#touchBtn').css({'pointer-events': ''});
+				},500)
+			}
 		});
+
+		// $('#clipArea').bind('touchend',function(e){
+		// 	$('#touchBtn').css({'pointer-events': ''});
+		// });
 
 		function initScroll() {
 			var options = {
