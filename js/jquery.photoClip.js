@@ -223,7 +223,8 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("1111");
+		$('#imgHtml').html(1111);
+
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -233,6 +234,8 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
+			}else{
+				oneFingerMoveOrigin = {x:e.originalEvent.targetTouches[0].clientX,y:e.originalEvent.targetTouches[0].clientY};
 			}
 		});
 		$('#touchBtn').bind('touchmove',function(e){
@@ -261,51 +264,67 @@
 				}
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
-				$('#touchBtn').css({'pointer-events': 'none'});
-			}
-		});
 
-		$('#clipArea').bind('touchstart',function(e){
-			if(e.originalEvent.targetTouches.length > 1){
-				e.preventDefault();
-				e.stopPropagation();
-				$('#touchBtn').css({'pointer-events': ''});
-			}
-		});
+				const curScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
+				const curpageX = Number($('.photo-clip-moveLayer').css('transform').split(',')[4]);
+				const curpageY = Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0]);
 
-		$('#clipArea').bind('touchmove',function(e){
-			if(e.originalEvent.targetTouches.length > 1){				
-				e.preventDefault();
-				e.stopPropagation();
-				$('#touchBtn').css({'pointer-events': ''});
-			}
-		});
+				const curmovedistanceX = (e.originalEvent.targetTouches[0].clientX - oneFingerMoveOrigin.x) * 0.1;
+				const curmovedistanceY = (e.originalEvent.targetTouches[0].clientY - oneFingerMoveOrigin.y) * 0.1;
 
-		$('#clipArea').bind('touchend',function(e){
-			$('#touchBtn').css({'pointer-events': ''});
-		});
+				const curboxWidth = $('.photo-clip-view').width();
+				const curboxHeight = $('.photo-clip-view').height();
 
-		$('.photo-clip-moveLayer').bind('touchstart',function(e){
-			if(e.originalEvent.targetTouches.length > 1){
-				e.preventDefault();
-				e.stopPropagation();
-				$('#touchBtn').css({'pointer-events': ''});
+				console.log($('.photo-clip-moveLayer').css('transform'),333);
+
+				var curPosObjX,curPosObjY;
+
+				if(curAngle === 0 || curAngle === 180){
+					if( curmovedistanceX + curpageX > 0){
+						curPosObjX = 0;
+					}else if(curmovedistanceX + curpageX < -((imgWidth * curScale) - curboxWidth)){
+						curPosObjX = -((imgWidth * curScale) - curboxWidth);
+					}else{
+						curPosObjX = curmovedistanceX + curpageX;
+					}
+
+					if(curmovedistanceY + curpageY > 0){
+						curPosObjY = 0;
+					}else if(curmovedistanceY + curpageY < -((imgHeight * curScale) - curboxHeight)){
+						curPosObjY = -((imgHeight * curScale) - curboxHeight);
+					}else{
+						curPosObjY = curmovedistanceY + curpageY;
+					}
+				}else{
+					if(curmovedistanceX + curpageX > 0){
+						curPosObjX = 0;
+					}else if(curmovedistanceX + curpageX < -((imgHeight * curScale) - curboxWidth)){
+						curPosObjX = -((imgHeight * curScale) - curboxWidth);
+					}else{
+						curPosObjX = curmovedistanceX + curpageX;
+					}
+
+					if( curmovedistanceY + curpageY > 0){
+						curPosObjY = 0;
+					}else if(curmovedistanceY + curpageY < -((imgWidth * curScale) - curboxHeight)){
+						curPosObjY = -((imgWidth * curScale) - curboxHeight);
+					}else{
+						curPosObjY = curmovedistanceY + curpageY;
+					}
+				}
+
+				var curTransform = $('.photo-clip-moveLayer').css('transform').split(',');
+
+				curTransform.splice(4,2,curPosObjX+','+curPosObjY+')');
+
+				$('.photo-clip-moveLayer').css({'transform':curTransform.join(',')})
+
 			}
 		});
 
 		$('.photo-clip-moveLayer').bind('touchmove',function(e){
-			if(e.originalEvent.targetTouches.length > 1){
-				e.preventDefault();
-				e.stopPropagation();
-				$('#touchBtn').css({'pointer-events': ''});
-			}
+			console.log($('.photo-clip-moveLayer').css('transform'),333);
 		});
-
-		$('.photo-clip-moveLayer').bind('touchend',function(e){
-			$('#touchBtn').css({'pointer-events': ''});
-		});
-
-
 
 		function initScroll() {
 			var options = {
