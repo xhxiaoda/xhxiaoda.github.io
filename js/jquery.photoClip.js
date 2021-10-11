@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(555);
+		$('#imgHtml').html(4444);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -270,8 +270,8 @@
 				const curpageX = Number($('.photo-clip-moveLayer').css('transform').split(',')[4]);
 				const curpageY = Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0]);
 
-				const curmovedistanceX = (e.originalEvent.targetTouches[0].clientX - oneFingerMoveOrigin.x);
-				const curmovedistanceY = (e.originalEvent.targetTouches[0].clientY - oneFingerMoveOrigin.y);
+				const curmovedistanceX = (e.originalEvent.targetTouches[0].clientX - oneFingerMoveOrigin.x) * 0.1;
+				const curmovedistanceY = (e.originalEvent.targetTouches[0].clientY - oneFingerMoveOrigin.y) * 0.1;
 
 				const curboxWidth = $('.photo-clip-view').width();
 				const curboxHeight = $('.photo-clip-view').height();
