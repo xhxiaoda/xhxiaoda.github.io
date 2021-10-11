@@ -275,17 +275,20 @@
 			}
 		});
 
-		$('#clipArea').bind('touchmove',function(e){
-			isMoveFlags = false;
-			if (e.originalEvent.targetTouches.length > 1 && !isMoveFlag) {
-				isMoveFlag = true;
-				$('#touchBtn').css({'pointer-events': ''});
-			}
-		});
-
-		// $('#clipArea').bind('touchend',function(e){
-		// 	$('#touchBtn').css({'pointer-events': ''});
+		// $('#clipArea').bind('touchmove',function(e){
+		// 	isMoveFlags = false;
+		// 	if (e.originalEvent.targetTouches.length > 1 && !isMoveFlag) {
+		// 		isMoveFlag = true;
+		// 		$('#touchBtn').css({'pointer-events': ''});
+		// 	}
 		// });
+
+		$('#clipArea').bind('touchend',function(e){
+			// if(!isMoveFlag){
+			// 	isMoveFlag = true;
+				$('#touchBtn').css({'pointer-events': ''});
+			// }
+		});
 
 		function initScroll() {
 			var options = {
