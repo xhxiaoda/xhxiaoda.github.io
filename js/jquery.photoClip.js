@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html("7777");
+		$('#imgHtml').html("1111");
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
 				// 当两根手指放上去的时候，将距离(distance)初始化。
@@ -264,7 +264,6 @@
 				if(touchmoveNum <= 1.5){
 					touchmoveNum = 1.5;
 				}
-				$('#imgHtml').html("111");
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
 				if(!isMoveFlags){
@@ -284,10 +283,8 @@
 		// });
 
 		$('#clipArea').bind('touchend',function(e){
-			// if(!isMoveFlag){
-			// 	isMoveFlag = true;
-				$('#touchBtn').css({'pointer-events': ''});
-			// }
+			isMoveFlags = false;
+			$('#touchBtn').css({'pointer-events': ''});
 		});
 
 		function initScroll() {
