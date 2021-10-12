@@ -226,7 +226,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(8888);
+		$('#imgHtml').html(9999);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -247,6 +247,9 @@
 			if (e.originalEvent.targetTouches.length > 1) {		
 
 				let curScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
+
+				const curpageX = Number($('.photo-clip-moveLayer').css('transform').split(',')[4]);
+				const curpageY = Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0]);
 
 				// 双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -295,7 +298,7 @@
 
 				curTwoFingerTransform.splice(3,1,curScale);
 
-				curTwoFingerTransform.splice(4,2,(curScale - originScale)*(-267.2657)+','+(curScale - originScale)*(-396.2)+')');
+				curTwoFingerTransform.splice(4,2,((curScale - originScale)*(-267.2657) + curpageX)+','+((curScale - originScale)*(-396.2) + curpageY)+')');
 
 				$('.photo-clip-moveLayer').css({'transform':curTwoFingerTransform.join(',')})
 
