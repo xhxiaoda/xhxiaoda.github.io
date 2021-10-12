@@ -226,7 +226,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(9999);
+		$('#imgHtml').html(8888);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -295,9 +295,9 @@
 
 				curTwoFingerTransform.splice(3,1,curScale);
 
-				curTransform.splice(4,2,(curScale - originScale)*(-267.2657)+','+(curScale - originScale)*(-396.2)+')');
+				curTwoFingerTransform.splice(4,2,(curScale - originScale)*(-267.2657)+','+(curScale - originScale)*(-396.2)+')');
 
-				$('.photo-clip-moveLayer').css({'transform':curTransform.join(',')})
+				$('.photo-clip-moveLayer').css({'transform':curTwoFingerTransform.join(',')})
 
 			}else{
 
