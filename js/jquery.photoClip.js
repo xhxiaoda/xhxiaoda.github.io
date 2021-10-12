@@ -223,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(6666);
+		$('#imgHtml').html(7777);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -260,8 +260,8 @@
 					touchmoveNum -= 0.01;			
 				}
 
-				if(touchmoveNum <= 1.5){
-					touchmoveNum = 1.5;
+				if(touchmoveNum <= 0){
+					touchmoveNum = 0;
 				}
 				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 			}else{
