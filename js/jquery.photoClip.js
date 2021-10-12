@@ -189,7 +189,8 @@
 		var distanceOrigin, //双指之间原始距离
 				distanceNow, // 双指移动后的差值
 				oneFingerMoveOrigin,
-				originScale;
+				originScale,
+				twoFingerMoveOrigin;
 
 		function imgLoad() {
 			imgLoaded = true;
@@ -206,6 +207,8 @@
 			});
 
 			originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
+
+			twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
 
 			loadComplete.call(this, this.src);
 		}
@@ -226,7 +229,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(9999);
+		$('#imgHtml').html(8888);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -298,9 +301,11 @@
 
 				curTwoFingerTransform.splice(3,1,curScale);
 
-				curTwoFingerTransform.splice(4,2,((curScale - originScale)*(-267.2657) + curpageX)+','+((curScale - originScale)*(-396.2) + curpageY)+')');
+				curTwoFingerTransform.splice(4,2,((curScale - originScale)*(-267.2657) + twoFingerMoveOrigin.x)+','+((curScale - originScale)*(-396.2) + twoFingerMoveOrigin.y)+')');
 
 				$('.photo-clip-moveLayer').css({'transform':curTwoFingerTransform.join(',')})
+
+				twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
 
 			}else{
 
