@@ -226,7 +226,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(8888);
+		$('#imgHtml').html(9999);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -258,44 +258,46 @@
 
 				const distanceDiff = distanceNow - distanceOrigin;
 				
-				if(distanceDiff > 0 && touchmoveNum < 4){
-					touchmoveNum += 0.01;	
-				}
-
-				if(distanceDiff < 0 && touchmoveNum > 0){
-					touchmoveNum -= 0.01;	
-				}
-
-				if(touchmoveNum <= 0){
-					touchmoveNum = 0;
-				}
-				
-				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
-
-				// if(distanceDiff > 0 && curScale <= 1){		
-				// 	curScale += 0.01;		
+				// if(distanceDiff > 0 && touchmoveNum < 4){
+				// 	touchmoveNum += 0.01;	
 				// }
 
-				// if(distanceDiff < 0 && curScale >= originScale){
-				// 	curScale -= 0.01;		
+				// if(distanceDiff < 0 && touchmoveNum > 0){
+				// 	touchmoveNum -= 0.01;	
+				// }
+
+				// if(touchmoveNum <= 0){
+				// 	touchmoveNum = 0;
 				// }
 				
+				// myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 
-				// if(curScale <= originScale){
-				// 	curScale = originScale;
-				// }
+				if(distanceDiff > 0 && curScale <= 1){		
+					curScale += 0.01;		
+				}
 
-				// if(curScale >= 1){
-				// 	curScale = 1;
-				// }
+				if(distanceDiff < 0 && curScale >= originScale){
+					curScale -= 0.01;		
+				}
+				
 
-				// var curTwoFingerTransform = $('.photo-clip-moveLayer').css('transform').split(',');
+				if(curScale <= originScale){
+					curScale = originScale;
+				}
 
-				// curTwoFingerTransform.splice(0,1,'matrix('+curScale);
+				if(curScale >= 1){
+					curScale = 1;
+				}
 
-				// curTwoFingerTransform.splice(3,1,curScale);
+				var curTwoFingerTransform = $('.photo-clip-moveLayer').css('transform').split(',');
 
-				// $('.photo-clip-moveLayer').css({'transform':curTransform.join(',')})
+				curTwoFingerTransform.splice(0,1,'matrix('+curScale);
+
+				curTwoFingerTransform.splice(3,1,curScale);
+
+				curTransform.splice(4,2,(curScale - originScale)*(-267.2657)+','+(curScale - originScale)*(-396.2)+')');
+
+				$('.photo-clip-moveLayer').css({'transform':curTransform.join(',')})
 
 			}else{
 
