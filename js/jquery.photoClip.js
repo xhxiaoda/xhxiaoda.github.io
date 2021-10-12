@@ -188,7 +188,8 @@
 
 		var distanceOrigin, //双指之间原始距离
 				distanceNow, // 双指移动后的差值
-				oneFingerMoveOrigin;
+				oneFingerMoveOrigin,
+				originScale;
 
 		function imgLoad() {
 			imgLoaded = true;
@@ -203,6 +204,8 @@
 			hideAction($moveLayer, function() {
 				resetScroll();
 			});
+
+			originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
 
 			loadComplete.call(this, this.src);
 		}
@@ -223,7 +226,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(8888);
+		$('#imgHtml').html(9999);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -242,6 +245,9 @@
 			e.stopPropagation()
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {		
+
+				let curScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
+
 				// 双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
 				const yMove = e.originalEvent.targetTouches[1].clientY - e.originalEvent.targetTouches[0].clientY;
@@ -252,18 +258,45 @@
 
 				const distanceDiff = distanceNow - distanceOrigin;
 				
-				if(distanceDiff > 0 && touchmoveNum < 4){
-					touchmoveNum += 0.01;			
+				// if(distanceDiff > 0 && touchmoveNum < 4){
+				// 	touchmoveNum += 0.01;	
+				// }
+
+				// if(distanceDiff < 0 && touchmoveNum > 0){
+				// 	touchmoveNum -= 0.01;	
+				// }
+
+				// if(touchmoveNum <= 0){
+				// 	touchmoveNum = 0;
+				// }
+				
+				// myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
+
+				if(distanceDiff > 0 && curScale <= 1){		
+					curScale += 0.01;		
 				}
 
-				if(distanceDiff < 0 && touchmoveNum > 0){
-					touchmoveNum -= 0.01;			
+				if(distanceDiff < 0 && curScale >= originScale){
+					curScale -= 0.01;		
+				}
+				
+
+				if(curScale <= originScale){
+					curScale = originScale;
 				}
 
-				if(touchmoveNum <= 0){
-					touchmoveNum = 0;
+				if(curScale >= 1){
+					curScale = 1;
 				}
-				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
+
+				var curTwoFingerTransform = $('.photo-clip-moveLayer').css('transform').split(',');
+
+				curTwoFingerTransform.splice(0,1,'matrix('+curScale);
+
+				curTwoFingerTransform.splice(3,1,curScale);
+
+				$('.photo-clip-moveLayer').css({'transform':curTransform.join(',')})
+
 			}else{
 
 				const curScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
