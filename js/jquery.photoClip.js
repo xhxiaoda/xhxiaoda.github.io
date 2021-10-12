@@ -208,8 +208,6 @@
 
 			originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
 
-			twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
-
 			loadComplete.call(this, this.src);
 		}
 		var zoomNum = 0,
@@ -229,7 +227,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(8888);
+		$('#imgHtml').html(9999);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -240,6 +238,9 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
+
+				twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
+
 			}else{
 				oneFingerMoveOrigin = {x:e.originalEvent.targetTouches[0].clientX,y:e.originalEvent.targetTouches[0].clientY};
 			}
@@ -279,11 +280,11 @@
 				// myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 
 				if(distanceDiff > 0 && curScale <= 1){		
-					curScale += 0.01;		
+					curScale += 0.001;		
 				}
 
 				if(distanceDiff < 0 && curScale >= originScale){
-					curScale -= 0.01;		
+					curScale -= 0.001;		
 				}
 				
 
