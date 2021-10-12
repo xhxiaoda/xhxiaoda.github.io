@@ -227,7 +227,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(9999);
+		$('#imgHtml').html(7777);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
