@@ -188,9 +188,7 @@
 
 		var distanceOrigin, //双指之间原始距离
 				distanceNow, // 双指移动后的差值
-				oneFingerMoveOrigin,
-				originScale,
-				twoFingerMoveOrigin;
+				oneFingerMoveOrigin;
 
 		function imgLoad() {
 			imgLoaded = true;
@@ -205,8 +203,6 @@
 			hideAction($moveLayer, function() {
 				resetScroll();
 			});
-
-			// originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
 
 			loadComplete.call(this, this.src);
 		}
@@ -227,7 +223,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(555);
+		$('#imgHtml').html(33333);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -239,10 +235,6 @@
 	
 				distanceOrigin = distance;
 
-				originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
-
-				twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
-
 			}else{
 				oneFingerMoveOrigin = {x:e.originalEvent.targetTouches[0].clientX,y:e.originalEvent.targetTouches[0].clientY};
 			}
@@ -251,11 +243,6 @@
 			e.stopPropagation()
 			// 单手指缩放不做任何操作
 			if (e.originalEvent.targetTouches.length > 1) {		
-
-				let curScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
-
-				const curpageX = Number($('.photo-clip-moveLayer').css('transform').split(',')[4]);
-				const curpageY = Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0]);
 
 				// 双手指运动 x移动后的坐标和y移动后的坐标
 				const xMove = e.originalEvent.targetTouches[1].clientX - e.originalEvent.targetTouches[0].clientX;
@@ -267,48 +254,19 @@
 
 				const distanceDiff = distanceNow - distanceOrigin;
 				
-				// if(distanceDiff > 0 && touchmoveNum < 4){
-				// 	touchmoveNum += 0.01;	
-				// }
-
-				// if(distanceDiff < 0 && touchmoveNum > 0){
-				// 	touchmoveNum -= 0.01;	
-				// }
-
-				// if(touchmoveNum <= 0){
-				// 	touchmoveNum = 0;
-				// }
-				
-				// myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
-
-				if(distanceDiff > 0 && curScale <= 1){		
-					curScale += 0.001;		
+				if(distanceDiff > 0 && touchmoveNum < 4){
+					touchmoveNum += 0.01;	
 				}
 
-				if(distanceDiff < 0 && curScale >= originScale){
-					curScale -= 0.001;		
+				if(distanceDiff < 0 && touchmoveNum > 0){
+					touchmoveNum -= 0.01;	
+				}
+
+				if(touchmoveNum <= 0){
+					touchmoveNum = 0;
 				}
 				
-
-				if(curScale <= originScale){
-					curScale = originScale;
-				}
-
-				if(curScale >= 1){
-					curScale = 1;
-				}
-
-				var curTwoFingerTransform = $('.photo-clip-moveLayer').css('transform').split(',');
-
-				curTwoFingerTransform.splice(0,1,'matrix('+curScale);
-
-				curTwoFingerTransform.splice(3,1,curScale);
-
-				curTwoFingerTransform.splice(4,2,((curScale - originScale)*(-267.2657) + twoFingerMoveOrigin.x)+','+((curScale - originScale)*(-396.2) + twoFingerMoveOrigin.y)+')');
-
-				$('.photo-clip-moveLayer').css({'transform':curTwoFingerTransform.join(',')})
-
-				twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
+				myScroll.zoom(touchmoveNum.toFixed(2) * 0.25);
 
 			}else{
 
