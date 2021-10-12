@@ -206,7 +206,7 @@
 				resetScroll();
 			});
 
-			originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
+			// originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
 
 			loadComplete.call(this, this.src);
 		}
@@ -227,7 +227,7 @@
 				myScroll.zoom(sf);
 		});
 
-		$('#imgHtml').html(7777);
+		$('#imgHtml').html(555);
 
 		$('#touchBtn').bind('touchstart',function(e){
 			if (e.originalEvent.targetTouches.length > 1) {
@@ -238,6 +238,8 @@
 				const distance = Math.sqrt(xMove * xMove + yMove * yMove);
 	
 				distanceOrigin = distance;
+
+				originScale = Number($('.photo-clip-moveLayer').css('transform').split(',')[3]);
 
 				twoFingerMoveOrigin = {x:Number($('.photo-clip-moveLayer').css('transform').split(',')[4]),y:Number($('.photo-clip-moveLayer').css('transform').split(',')[5].split(')')[0])};
 
